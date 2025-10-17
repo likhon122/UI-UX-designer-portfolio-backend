@@ -4,13 +4,14 @@ import cookieParser from 'cookie-parser';
 import notFoundErrorHandler from './app/middlewares/notFoundErrorHandler';
 import globalErrorHandler from './app/errors/globalErrorHandler';
 import cors from 'cors';
+import { ENV } from './app/config';
 
 const app = express();
 
 // Cors
 app.use(
   cors({
-    origin: ['http://localhost:3000', 'http://localhost:8080'],
+    origin: ['http://localhost:3000', 'http://localhost:8080', ENV.clientUrl],
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     credentials: true,
   })
